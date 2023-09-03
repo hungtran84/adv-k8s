@@ -1,1 +1,1 @@
-# adv-k8s
+# advanced-k8s-course
