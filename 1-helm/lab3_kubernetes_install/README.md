@@ -20,8 +20,8 @@ minikube start
 ### Minikube configuration
 ```
 minikube addons enable ingress
-minikube ip
-sudo vi /etc/hosts
+echo "127.0.0.1 frontend.minikube.local" | sudo tee -a /etc/hosts
+echo "127.0.0.1 backend.minikube.local" | sudo tee -a /etc/hosts
 ```
 
 ## GKE
