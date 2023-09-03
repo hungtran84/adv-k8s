@@ -1,4 +1,4 @@
-# Deploy applications without helm
+# Deploy `GuestBook` v1
 
 - Start Minikube tunnel
 
@@ -27,3 +27,12 @@ kubectl apply -f ingress.yaml
 - Access the application UI
 
 ![Alt text](image.png)
+
+- Leave your message 
+
+![Alt text](image-1.png)
+
+- It works !
+
+![Alt text](image-2.png)
+
