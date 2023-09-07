@@ -107,13 +107,10 @@ gcloud container clusters create "adv-k8s-cluster" \
         --release-channel "None" \
         --machine-type "e2-medium" \
         --num-nodes "2" \
-        --enable-ip-alias \
-        --enable-private-nodes \
-        --master-ipv4-cidr "172.16.0.0/28" \
         --cluster-dns=clouddns --cluster-dns-scope=cluster \
         --no-enable-master-authorized-networks \
         --no-enable-autoupgrade \
-        --no-enable-managed-prometheus \
+        --no-enable-managed-prometheus
 ```
 
 - Get GKE credential
