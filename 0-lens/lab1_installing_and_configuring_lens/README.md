@@ -1,4 +1,4 @@
-# Managing k8s clusters with Lens
+# Installing and configuring Lens
 
 ## OpenLens
 ### Installing OpenLens using package manager

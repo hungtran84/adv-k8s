@@ -121,5 +121,5 @@ gcloud container clusters get-credentials adv-k8s-cluster --zone asia-southeast1
 
 - Delete our GKE cluster if needed
 ```
-gcloud container clusters delete adv-k8s-cluster --zone asia-southeast1-a
+gcloud container clusters delete adv-k8s-cluster --zone asia-southeast1-a -q
 ```
