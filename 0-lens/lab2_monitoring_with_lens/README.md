@@ -19,6 +19,8 @@ kubectl config view --minify --raw
 ```
 
 - Add the cluster to Lens
+
+
 ![Add Clusters from Kubeconfig](image.png)
 
 ### Remove the cluster from Lens
