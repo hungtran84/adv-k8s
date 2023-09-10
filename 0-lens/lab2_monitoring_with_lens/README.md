@@ -44,7 +44,7 @@ kubectl config view --minify --raw
 
 - Since Len cannot detect your Prometheus API (which intentionally disables when provisioning GKE cluster). We will make use of Lens Metrics to enable that.
 
-![Alt text](image-4.png)
+![Alt text](image-6.png)
 
 - Check if Lens Metric pods installed
 
