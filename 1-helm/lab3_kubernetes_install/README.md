@@ -18,7 +18,7 @@ minikube start
 ```
 
 ### Minikube configuration
-```
+```shell
 minikube addons enable ingress
 echo "127.0.0.1 frontend.minikube.local" | sudo tee -a /etc/hosts
 echo "127.0.0.1 backend.minikube.local" | sudo tee -a /etc/hosts
@@ -55,7 +55,7 @@ echo "127.0.0.1 backend.minikube.local" | sudo tee -a /etc/hosts
 > DO NOT hit `ACTIVATE FULL ACCOUNT` button above to avoid any additional fee!
 ### Create a basic GKE cluster with minimal add-ons
 - Setup your gcloud project configuration
-```
+```shell
 $ gcloud config configurations create tokp01
 
 $ gcloud init
@@ -92,16 +92,16 @@ Pick cloud project to use:
 Please enter numeric choice or text value (must exactly match list item):  1
 
 Your current project has been set to: [imposing-eye-398010].
-
 ```
 
 - Enable Kubernetes Engine API
 
+```shell
+$ gcloud services enable container.googleapis.com
 ```
-gcloud services enable container.googleapis.com
-```
-```
-gcloud container clusters create "adv-k8s-cluster" \
+
+```shell
+$ gcloud container clusters create "adv-k8s-cluster" \
         --zone "asia-southeast1-a" \
         --cluster-version "1.27.3-gke.100" \
         --release-channel "None" \
@@ -113,13 +113,29 @@ gcloud container clusters create "adv-k8s-cluster" \
         --no-enable-managed-prometheus
 ```
 
+- In case you get the error while creating the `GKE` cluster, because of the reason:
+  
+> Starting with `v1.26`, this code will no longer be included as part of the OSS kubectl. GKE users will need to download and use a separate authentication plugin to generate GKE-specific tokens. This new binary, `gke-gcloud-auth-plugin`, uses the Kubernetes Client-go Credential Plugin mechanism to extend kubectl’s authentication to support GKE. Because plugins are already supported by kubectl, you can switch to the new mechanism now, before `v1.26` becomes available.
+
+> https://cloud.google.com/blog/products/containers-kubernetes/kubectl-auth-changes-in-gke    
+
+![Alt text](image-6.png)
+
+```shell
+# Install using "gcloud components install"
+$ gcloud components install gke-gcloud-auth-plugin
+```
+
 - Get GKE credential
 
-```
-gcloud container clusters get-credentials adv-k8s-cluster --zone asia-southeast1-a
+```shell
+$ gcloud container clusters get-credentials adv-k8s-cluster \
+    --zone asia-southeast1-a
 ```
 
 - Delete our GKE cluster if needed
-```
-gcloud container clusters delete adv-k8s-cluster --zone asia-southeast1-a -q
+
+```shell
+$ gcloud container clusters delete adv-k8s-cluster \
+    --zone asia-southeast1-a -q
 ```
