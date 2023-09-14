@@ -3,7 +3,7 @@
 - Deploy `GuestBook` application
 
 ```
-./create.sh
+./yaml/create.sh
 ```
 
 - Access to GuestBook UI. It is now, in v2
@@ -17,5 +17,5 @@
 - Cleanup resources
 
 ```
-./delete.sh
+./yaml/delete.sh
 ```
