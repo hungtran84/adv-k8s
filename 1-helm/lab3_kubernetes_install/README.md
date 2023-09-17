@@ -139,3 +139,23 @@ $ gcloud container clusters get-credentials adv-k8s-cluster \
 $ gcloud container clusters delete adv-k8s-cluster \
     --zone asia-southeast1-a -q
 ```
+
+- Install NGINX Ingress Controller
+
+```
+helm install nginx-ingress oci://ghcr.io/nginxinc/charts/nginx-ingress --version 0.18.1 --namespace ingress-nginx --create-namespace
+```
+
+- Validate the NGINX Ingress Controller
+
+```
+❯ kubectl get pods --all-namespaces -l app.kubernetes.io/name=ingress-nginx
+NAMESPACE       NAME                                        READY   STATUS             RESTARTS      AGE
+ingress-nginx   ingress-nginx-admission-create-hjcjr        0/1     Completed          0             2m18s
+ingress-nginx   ingress-nginx-admission-patch-5xsrx         0/1     CrashLoopBackOff   4 (35s ago)   2m18s
+ingress-nginx   ingress-nginx-controller-7475967c4c-9smvh   0/1     Running            1 (60s ago)   2m19s
+
+❯ kubectl get services ingress-nginx-controller --namespace=ingress-nginx
+NAME                       TYPE           CLUSTER-IP   EXTERNAL-IP      PORT(S)                      AGE
+ingress-nginx-controller   LoadBalancer   10.16.6.75   34.142.180.237   80:30392/TCP,443:31728/TCP   2m40s
+```
