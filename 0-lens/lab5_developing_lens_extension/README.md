@@ -15,7 +15,12 @@
 
 - Examine `Resource Map` 
 
+> #### Note:
+> Maybe a bug from `Lens`, when seeing nothing from extension `Resource Map`, please try to close and start again `Lens` 
+
 ![Alt text](image-2.png)
+
+![Alt text](image-3.png)
 
 ## Develop your own extension (coming soon)
 
