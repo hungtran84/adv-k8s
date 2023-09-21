@@ -13,7 +13,7 @@ spec:
         app: frontend
     spec:
       containers:
-      - image: phico/frontend:2.0
+      - image: ghcr.io/hungtran84/frontend:2.0
         imagePullPolicy: Always
         name: frontend
         ports:
