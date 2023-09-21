@@ -90,11 +90,6 @@ echo "$EXTERNAL_IP backend.gke.local" | sudo tee -a /etc/hosts
 
 ![Alt text](image.png)
 
-- Update chart
-
-```
-
-```
 - Cleanup resources
 
 ```
