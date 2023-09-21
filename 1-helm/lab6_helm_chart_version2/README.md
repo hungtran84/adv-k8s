@@ -5,8 +5,13 @@
 - Create chart directory and templates
 ```shell
 mkdir guestbook
-mkdir -p guestbook/templates
-cp 1-helm/lab6_helm_chart_version2/yaml/* guestbook/templates
+mkdir -p guestbook/charts/backend/templates
+mkdir -p guestbook/charts/database/templates
+mkdir -p guestbook/charts/frontend/templates
+cp 1-helm/lab6_helm_chart_version2/yaml/backend* guestbook/charts/backend/templates
+cp 1-helm/lab6_helm_chart_version2/yaml/mongo* guestbook/charts/database/templates
+cp 1-helm/lab6_helm_chart_version2/yaml/frontend* guestbook/charts/frontend/templates
+cp 1-helm/lab6_helm_chart_version2/yaml/ingress* guestbook/charts/frontend/templates
 ```
 
 - Create `Chart.yaml`
@@ -18,6 +23,36 @@ name: guestbook
 appVersion: "2.0"
 description: A Helm chart for Guestbook 2.0 
 version: 1.1.0
+type: application
+```
+
+```yaml
+# vim guestbook/charts/backend/Chart.yaml
+apiVersion: v2
+name: backend
+appVersion: "1.0"
+description: A Helm chart for Guestbook Backend 1.0 
+version: 0.1.0
+type: application
+```
+
+```yaml
+# vim guestbook/charts/frontend/Chart.yaml
+apiVersion: v2
+name: frontend
+appVersion: "2.0"
+description: A Helm chart for Guestbook Frontend 2.0 
+version: 1.1.0
+type: application
+```
+
+```yaml
+# vim guestbook/charts/database/Chart.yaml
+apiVersion: v2
+name: database
+appVersion: "3.6"
+description: A Helm chart for Guestbook Database Mongodb 3.6 
+version: 0.1.0
 type: application
 ```
 
