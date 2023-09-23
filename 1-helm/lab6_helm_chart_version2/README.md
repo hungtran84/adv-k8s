@@ -56,6 +56,12 @@ version: 0.1.0
 type: application
 ```
 
+- Package the chart
+
+```
+helm package guestbook
+```
+
 - Render chart templates locally and display the output.
 
 ```shell
