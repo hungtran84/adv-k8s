@@ -21,7 +21,7 @@ helm create builtinobjects
 cat /dev/null > builtinobjects/templates/NOTES.txt
 
 # helm install --dry-run
-helm install myapp1 . --dry-run
+helm install myapp1 builtinobjects --dry-run
 ```
 
 ## 3. Helm Object: Root or dot or Period (.)

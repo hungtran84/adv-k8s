@@ -15,7 +15,7 @@ resources:
 # For testing Flow Control: if-else Block
 image:
   environment: ""
-  repository: ghcr.io/stacksimplify/kubenginxhelm
+  repository: ghcr.io/hungtran84/frontendhelm
   pullPolicy: IfNotPresent
   devtag: "0.2.0"
   qatag: "0.3.0"
