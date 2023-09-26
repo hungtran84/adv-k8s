@@ -1,9 +1,9 @@
 dependencies:
 - name: mychart1
-  repository: https://stacksimplify.github.io/helm-charts/
+  repository: oci://ghcr.io/hungtran84/helm
   version: 0.1.0
 - name: mychart2
-  repository: https://stacksimplify.github.io/helm-charts/
+  repository: oci://ghcr.io/hungtran84/helm
   version: 0.4.0
 - name: mysql
   repository: https://charts.bitnami.com/bitnami

@@ -1,0 +1,9 @@
+dependencies:
+- name: mychart4
+  repository: oci://ghcr.io/hungtran84/helm
+  version: 0.1.0
+- name: mychart2
+  repository: oci://ghcr.io/hungtran84/helm
+  version: 0.4.0
+digest: sha256:5b19d7975e62897ea6431816261ed4b11586ef59bd6ddd18d32bf07e3ce02adb
+generated: "2023-09-27T01:14:19.256542+07:00"

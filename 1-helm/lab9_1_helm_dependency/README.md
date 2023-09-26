@@ -25,10 +25,10 @@ appVersion: "1.16.0"
 dependencies:
 - name: mychart1
   version: "0.1.0"
-  repository: "https://stacksimplify.github.io/helm-charts/"
+  repository: "oci://ghcr.io/hungtran84/helm"
 - name: mychart2
   version: "0.4.0"
-  repository: "https://stacksimplify.github.io/helm-charts/"
+  repository: "oci://ghcr.io/hungtran84/helm"
 - name: mysql
   version: "9.9.0"
   repository: "https://charts.bitnami.com/bitnami"
