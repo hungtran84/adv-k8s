@@ -86,9 +86,6 @@ open http://$SERVICE_IP:80
 ```
 ## 7. Helm Package - v1.0.0
 ```sh
-# Check if you are  in the lab director
-cd 25-Helm-Create-and-Package-Chart
-
 # Helm Package
 helm package myfirstchart/ --destination 1-helm/lab8_create_and_package_chart/packages/
 
