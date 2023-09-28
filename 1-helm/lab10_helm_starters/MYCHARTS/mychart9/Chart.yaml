@@ -7,4 +7,4 @@ version: 0.1.0
 dependencies:
 - name: mychart4
   version: "0.1.0"
-  repository: "https://stacksimplify.github.io/helm-charts/"
+  repository: "oci://ghcr.io/hungtran84/helm/"

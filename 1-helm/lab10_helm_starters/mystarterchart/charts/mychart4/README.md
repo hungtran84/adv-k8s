@@ -9,7 +9,7 @@
 ```t
 # Add Helm Repository
 $ helm repo list
-$ helm repo add stacksimplify https://stacksimplify.github.io/helm-charts
+$ helm repo add stacksimplify oci://ghcr.io/hungtran84/helm
 $ helm repo list
 
 # Install Helm Chart

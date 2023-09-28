@@ -41,9 +41,9 @@ helm create mystarterchart
 dependencies:
 - name: mychart4
   version: "0.1.0"
-  repository: "https://stacksimplify.github.io/helm-charts/"
+  repository: "oci://ghcr.io/hungtran84/helm/"
 11. Sub Charts: Download and untar a Helm Chart to "charts" directory. We are going to observe what happens to "charts" directory when we create a chart from starter chart
-helm pull https://stacksimplify.github.io/helm-charts/mychart4-0.1.0.tgz --untar
+helm pull oci://ghcr.io/hungtran84/helm/mychart4-0.1.0.tgz --untar
 12. Update NOTES.txt: remove if statement for Ingress
 ```
 
