@@ -17,6 +17,9 @@ helm create myfirstchart
 # Observation: 
 1. It will create a base Helm Chart template 
 2. We can call it as a starter chart. 
+
+# Note:
+1. Chart name has to be a lowercase RFC 1123 subdomain must consist of lower case alphanumeric characters, '-' or '.', and must start and end with an alphanumeric character
 ```
 
 ## 3. Update values.yaml with our Application Docker Image
@@ -71,6 +74,7 @@ helm install myapp1v1 myfirstchart
 # List Helm Releases
 helm list
 helm list --output=yaml
+helm list --output=json | jq
 
 # Helm Status
 helm status myapp1v1 --show-resources
@@ -133,6 +137,8 @@ helm list
 helm list --output=yaml
 
 # Helm Status
+# `--show-resource` option flag would need helm with version 3.13.x
+# so please upgrade your helm https://helm.sh/docs/intro/install/#from-script
 helm status myapp1v11 --show-resources
 
 # Access in Browser
@@ -143,13 +149,13 @@ open http://$SERVICE_IP:80
 
 ## 10. Helm Package with --app-version, --version
 - [Docker Image used](https://github.com/users/hungtran84/packages/container/package/frontend)
-```t
+```sh
 # Helm Package  --app-version
 helm package myfirstchart/ --app-version "2.0" --version "2.0.0" --destination 1-helm/lab8_create_and_package_chart/packages/
 ```
 
 ## 11. Helm Install and Test if --version "2.0.0" worked
-```t
+```sh
 # Helm Install from package
 helm install myapp1v2 1-helm/lab8_create_and_package_chart/packages/myfirstchart-2.0.0.tgz
 
