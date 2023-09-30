@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: postgres
+  name: prefix-tokp01-postgres-suffix-tokp01
+  namespace: tokp01
+spec:
+  ports:
+  - port: 5432
+  selector:
+    app: postgres
+  type: NodePort
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prefix-tokp01-myapp-suffix-tokp01
+  namespace: tokp01
+spec:
+  selector:
+    matchLabels:
+      app: myapp
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      containers:
+      - image: __image__
+        name: myapp
+      - image: nginx
+        name: nginx

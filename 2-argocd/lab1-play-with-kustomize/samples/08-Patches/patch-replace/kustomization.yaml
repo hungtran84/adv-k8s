@@ -1,0 +1,10 @@
+# kustomization.yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+- ../../_base
+  
+patches:
+- path: patch-replace-ports.yaml
+- path: patch-replace-image.yaml

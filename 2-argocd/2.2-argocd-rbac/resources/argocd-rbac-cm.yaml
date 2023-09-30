@@ -1,0 +1,30 @@
+apiVersion: v1
+data:
+  policy.csv: |
+    p, role:developers, applications, *, */*, allow
+    p, role:developers, applicationsets, *, */*, allow
+    p, role:developers, repositories, get, *, allow
+    p, role:developers, repositories, create, *, allow
+    p, role:developers, repositories, update, *, allow
+    p, role:developers, repositories, delete, *, allow
+    p, role:developers, projects, get, *, allow
+    p, role:developers, projects, create, *, allow
+    p, role:developers, projects, update, *, allow
+    p, role:developers, projects, delete, *, allow
+    p, role:developers, logs, get, *, allow
+    g, alice, role:developers
+    g, <your_account>@gmail.com, role:admin
+  policy.default: ""
+  scopes: '[email, group]'
+kind: ConfigMap
+metadata:
+  labels:
+    app.kubernetes.io/component: server
+    app.kubernetes.io/instance: argocd
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: argocd-rbac-cm
+    app.kubernetes.io/part-of: argocd
+    app.kubernetes.io/version: v2.6.6
+    helm.sh/chart: argo-cd-5.46.5
+  name: argocd-rbac-cm
+  namespace: argocd

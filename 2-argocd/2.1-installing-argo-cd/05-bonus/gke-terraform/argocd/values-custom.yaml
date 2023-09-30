@@ -1,0 +1,26 @@
+dex:
+  enabled: false
+
+server:
+  extraArgs:
+    - --insecure
+
+  service:
+    type: NodePort
+
+  labels:
+    owner: hoan.lac
+
+  ingress:
+    enabled: true
+
+    annotations: # {}
+      kubernetes.io/ingress.class: gce
+
+    hosts:
+      - argocd.yourcorp.com
+
+    paths:
+      - /
+
+    pathType: Prefix
