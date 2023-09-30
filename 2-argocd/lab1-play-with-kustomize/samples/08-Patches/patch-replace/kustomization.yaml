@@ -6,5 +6,5 @@ resources:
 - ../../_base
   
 patches:
-- path: patch-replace-ports.yaml
 - path: patch-replace-image.yaml
+

@@ -12,3 +12,4 @@ spec:
   # The default port for postgres
   ports:
     - port: 5432
+

@@ -646,7 +646,6 @@ resources:
   - ../../_base
   
 patches:
-- path: patch-replace-ports.yaml
 - path: patch-replace-image.yaml
 ```
 
@@ -668,24 +667,6 @@ spec:
           args:
           - one
           - two
-```
-
-```yaml
-# patch-replace-ports.yaml
-apiVersion: v1
-kind: Service
-metadata:
-  name: postgres
-  namespace: postgres
-  labels:
-    app: postgres
-spec:
-  selector:
-    app: postgres
-  $patch: replace
-  # Replace the current ports with port 80
-  ports:
-    - port: 80
 ```
 
 - Output:
