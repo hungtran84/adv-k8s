@@ -111,3 +111,9 @@ istioctl dashboard kiali --browser=false --address 0.0.0.0
 ```
 
 7. Access the Kiali UI at http://0.0.0.0:20001/kiali, and you should be able to view the `Kiali UI`. Press `ctrl+C` to end the prior command. You will not see much telemetry data on any of these dashboards now, as you don't have any services defined in the Istio service mesh yet. You will revisit these dashboards soon.
+
+## Uninstall Istio
+
+```sh
+istioctl uninstall --purge
+```
