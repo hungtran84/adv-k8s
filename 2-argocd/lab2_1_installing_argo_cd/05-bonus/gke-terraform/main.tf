@@ -39,7 +39,7 @@ module "gke" {
       auto_upgrade    = true
       auto_repair     = true
       autoscaling     = true
-      service_account = "lab-argocd@${var.project_id}.iam.gserviceaccount.com"
+      service_account = "${var.service_account_name}@${var.project_id}.iam.gserviceaccount.com"
     },
   ]
 
