@@ -59,6 +59,14 @@ gcloud config set project $PROJECT_ID
 
 ## Provision GKE Cluster with Terraform
 Update the values in **terraform.tfvars** and run following commands:
+
+```t
+terraform.tfvars
+project_id   = "imposing-eye-398010" # update with your own Project ID
+cluster_name = "gke-terraform-project"
+region       = "europe-west2"  # update with your region
+service_account_name = "terraform-sa"
+```
 ```
 terraform init
 terraform plan
@@ -68,7 +76,7 @@ terraform apply --auto-approve
 ## Get kubernetes credential
 ```
 gcloud components install gke-gcloud-auth-plugin
-gcloud container clusters get-credentials <CLUSTER_NAME> --region <REGION> --project <PROJECT_ID>
+gcloud container clusters get-credentials gke-terraform-project --region europe-west2 --project $PROJECT_ID
 ```
 
 ## Set static IP to host file
