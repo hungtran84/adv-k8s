@@ -29,20 +29,32 @@ $ gcloud services enable container.googleapis.com
 $ gcloud services enable compute.googleapis.com
 ```
 
-## Create a Service Account:
-It is recommended to use separate service accounts for different services. In this guide, we will create a dedicated service account for Terraform to ensure proper isolation and control over its permissions.
+## Setup environment variables
 
-Go to the Service accounts page: [serviceaccounts](https://console.cloud.google.com/projectselector2/iam-admin/serviceaccounts?supportedpurview=project) in the Google Cloud Console.
-Click the Create service account button, Enter a name for the service account.
-Select a role for the service account and Click the Create button.
-The service account will be created and a JSON key file will be downloaded to your computer. This file contains the service account credentials
+```
+export PROJECT_ID=`gcloud config get-value project`
+export SA="terraform-sa"
+```
+## Create a Service Account:
+- Create a Service Account
+
+```sh
+gcloud iam service-accounts create $SA --description="Terraform Service account for GKE provisioning" --display-name="Terraform Service Account"
+```
+- Provide your freshly created service account with the necessary roles and permissions
+
+```sh
+gcloud projects add-iam-policy-binding $PROJECT_ID \
+--member="serviceAccount:$SA@$PROJECT_ID.iam.gserviceaccount.com" \
+--role="roles/editor"
+```
 
 ## Initialize the gcloud SDK:
 ```
 gcloud auth list
 gcloud auth application-default login
-gcloud config set account <ACCOUNT>
-gcloud config set project <PROJECT_ID>
+gcloud config set account $SA
+gcloud config set project $PROJECT_ID
 ```
 
 ## Provision GKE Cluster with Terraform
