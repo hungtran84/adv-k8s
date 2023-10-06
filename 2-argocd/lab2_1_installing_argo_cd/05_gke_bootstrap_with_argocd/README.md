@@ -23,10 +23,10 @@ Enabling the APIs allows Terraform to interact with the necessary Google Cloud s
 
 To enable the required APIs for your project, you need to select and enable two APIs: the Compute Engine Api and Kubernetes Engine Api.If you need assistance locating these APIs in the Cloud Console API Library, you can use the search field and search for each API separately.
 
-```
-$ gcloud init
-$ gcloud services enable container.googleapis.com
-$ gcloud services enable compute.googleapis.com
+```sh
+gcloud init
+gcloud services enable container.googleapis.com
+gcloud services enable compute.googleapis.com
 ```
 
 ## Setup environment variables

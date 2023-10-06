@@ -104,12 +104,12 @@ metadata:
 # 5. Update custom domain
 Since the ArgoCD is not exposed to the external and the domain `argocd.yourcorp.com` is a custom local domain that we are not own it. So we can use a trick with `/etc/hosts` to map a local domain 
 
-Open `/etc/host` with `root` and update with the following valuee
+Open `/etc/hosts` with `root` and update with the following valuee
 ```
-127.0.0.1		localhost
+127.0.0.1		      localhost
 255.255.255.255		broadcasthost
-127.0.0.1		argocd.yourcorp.com
-::1                          localhost
+127.0.0.1		      argocd.yourcorp.com
+::1               localhost
 ```
 
 Try to ping the domain to make sure we can resolve the `127.0.0.1` ip address

@@ -92,7 +92,7 @@ alice  true     apiKey, login
 ### Update `alice` password
 > if you are managing users as the admin user, <current-user-password> should be the current admin password
 ```
-$ALICE_PWD="abcd@1234"
+export $ALICE_PWD="abcd@1234"
 
 argocd account update-password \
   --account alice \

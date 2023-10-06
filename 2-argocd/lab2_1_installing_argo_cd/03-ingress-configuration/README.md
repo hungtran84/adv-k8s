@@ -5,14 +5,14 @@ To configure ingress with Google Cloud load balancer for ArgoCD we need to perfo
 To disable internal TLS, we need to pass the --insecure flag to the argocd-server command, this will avoid an internal redirection loop from HTTP to HTTPS. For this, we need to edit the deployment named “argocd-server” and make the following changes  
 
 The container command should change from:
-```
+```yaml
 containers:
 - command:
   - argocd-server
 ```
 
 To:
-```
+```yaml
 containers:
 - command:
   - argocd-server
