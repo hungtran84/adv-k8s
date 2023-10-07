@@ -1,17 +1,17 @@
-# Prerequisites
+## Prerequisites
 The following tools need to be installed:
 - Kubectl 
 - ArgoCD CLI (https://argo-cd.readthedocs.io/en/stable/cli_installation)
 - Yq (https://github.com/mikefarah/yq#install)
 
-# 1. Get initial admin username - password
+## 1. Get initial admin username - password
 ArgoCD is created with an initial admin username and password, you can use the following command to retrieve it for the next step
 ```
 ARGOCD_PWD=$(kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d)
 echo "ArgoCD admin password: $ARGOCD_PWD"
 ```
 
-# 2. Login to ArgoCD CLI
+## 2. Login to ArgoCD CLI
 Setting the additional args for argocd cli
 ```
 export ARGOCD_OPTS='--port-forward --port-forward-namespace argocd'
@@ -28,7 +28,7 @@ Expected outputs
 Context 'port-forward' updated
 ```
 
-# 3. Create `alice` user
+## 3. Create `alice` user
 ArgoCD local user should be created using `argocd-cm` configMap. So we need to:
 - Backup the current `argocd-cm` configMap
 - Add a new `alice` user to `argocd-cm` configMap
@@ -42,13 +42,15 @@ kubectl get configmap argocd-cm -n argocd -o yaml | yq eval 'del(.metadata.resou
 The `yq` help us to remove unnecessary information out of the yaml file, so that our file will be export in the original format.
 
 ### Add new `alice` user
-Open `argocd-cm.yaml` and add the following value under `data` path
-```
+- Add the following value under `data` path
+```yaml
 accounts.alice: apiKey, login
 ```
 
-The updated `argocd-cm.yaml` should look like this
+```sh
+kubectl -n argocd edit configmaps argocd-cm
 ```
+```yaml
 apiVersion: v1
 data:
   accounts.alice: apiKey, login
@@ -72,11 +74,6 @@ metadata:
   namespace: argocd
 ```
 
-### Apply the updated `argocd-cm` configMap
-```
-kubectl apply -f argocd-cm.yaml
-```
-
 # 4. Set password for `alice`
 ### Get users
 ```
@@ -92,10 +89,11 @@ alice  true     apiKey, login
 ### Update `alice` password
 > if you are managing users as the admin user, <current-user-password> should be the current admin password
 ```
-export $ALICE_PWD="abcd@1234"
-
 argocd account update-password \
   --account alice \
-  --current-password $ARGOCD_PWD \
-  --new-password $ALICE_PWD
+  --current-password $ARGOCD_PWD
+
+*** Enter new password for user alice: 
+*** Confirm new password for user alice: 
+Password updated
 ```

@@ -1,10 +1,10 @@
-# Prerequisites
+## Prerequisites
 The following tools need to be installed:
 - Kubectl 
 - ArgoCD CLI (https://argo-cd.readthedocs.io/en/stable/cli_installation)
 - Yq (https://github.com/mikefarah/yq#install)
 
-# 1. Built-in role
+## 1. Built-in role
 Argo CD has two pre-defined roles but RBAC configuration allows defining roles and groups (see below).
 
 - `role:readonly` - read-only access to all resources
@@ -12,7 +12,7 @@ Argo CD has two pre-defined roles but RBAC configuration allows defining roles a
 
 These default built-in role definitions can be seen in [builtin-policy.csv](https://github.com/argoproj/argo-cd/blob/master/assets/builtin-policy.csv)
 
-# 2. Custom role
+## 2. Custom role
 Assume that we already logged in to argocd cli as in `01-Create Local user`
 
 ArgoCD RBAC is configured using `argocd-rbac-cm` configMap. So we need to:
@@ -51,11 +51,17 @@ g, alice, role:developers
 ```
 
 ### Add new custom policy to `argocd-rbac-cm` configMap
-Open `argocd-rbac-cm.yaml` and add the above policy under `data.policy.csv` path
+- Add the above policy under `data.policy.csv` path
+```
+g, alice, role:developers
+```
 
+```sh
+kubectl -n argocd edit configmaps argocd-rbac-cm
+```
 The updated `argocd-rbac-cm.yaml` should look like this
 
-```
+```yaml
 apiVersion: v1
 data:
   policy.csv: |
@@ -87,19 +93,14 @@ metadata:
   namespace: argocd
 ```
 
-### Apply the updated `argocd-rbac-cm.yaml` configMap
-```
-kubectl apply -f argocd-rbac-cm.yaml
-```
-
-# 3. Test the `alice` user via ArgoCD UI
-### a) Port Forwarding
+## 3. Test the `alice` user via ArgoCD UI
+### Port Forwarding
 Since our ArgoCD instance is still not public to the outside via any method, we need to do the port-forward it to our localhost to access it
 ```
 kubectl port-forward svc/argocd-server -n argocd 8080:443
 ```
 
-### b) Access ArgoCD Web UI
+### Access ArgoCD Web UI
 Open the web browser and enter the following address to access the ArgoCD Web UI
 ```
 http://localhost:8080
@@ -107,9 +108,9 @@ http://localhost:8080
 
 After that, enter the following username / password to login to the ArgoCD
 - Username: ***alice***
-- Password: abcd@1234
+- Password: ***
 
-### c) Test permission
+### Test permission
 Try to visit the following page:
 - Settings --> Repository certificates and known hosts
     - Result: `ACCESS DENIED`
@@ -117,6 +118,6 @@ Try to visit the following page:
 - Settings --> GnuPG keys
     - Result: `ACCESS DENIED`
     - Reason: `alice` does not have `gpgkeys` permission
-- Settings --> Projectsd --> NEW PROJECT
+- Settings --> Projects --> NEW PROJECT
     - Result: `SUCCESS`
     - Reason: `alice` has `projects` full access
