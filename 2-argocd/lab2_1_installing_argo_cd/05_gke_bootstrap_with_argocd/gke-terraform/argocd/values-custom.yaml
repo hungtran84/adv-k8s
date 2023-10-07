@@ -1,24 +1,24 @@
 dex:
-  enabled: false
+  enabled: true
 
 server:
   extraArgs:
     - --insecure
 
   service:
-    type: NodePort
+    type: ClusterIP
 
   labels:
-    owner: hoan.lac
+    owner: hungtran
 
   ingress:
-    enabled: true
+    enabled: false
 
     annotations: # {}
       kubernetes.io/ingress.class: gce
 
     hosts:
-      - argocd.yourcorp.com
+      - argocd.hungtran.net
 
     paths:
       - /

@@ -7,8 +7,3 @@ module "gke_auth" {
   use_private_endpoint = false
   depends_on           = [module.gke]
 }
-
-# resource "local_file" "kubeconfig" {
-#   content = module.gke_auth.kubeconfig_raw
-#   filename = "/tmp/kubeconfig-${var.env_name}"
-# }

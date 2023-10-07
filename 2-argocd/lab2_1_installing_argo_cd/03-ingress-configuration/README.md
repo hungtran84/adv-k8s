@@ -1,5 +1,5 @@
 # GKE Ingress Configuration
-To configure ingress with Google Cloud load balancer for ArgoCD we need to perform the below steps  
+To configure ingress with Google Cloud Load Balancer for ArgoCD we need to perform the below steps  
 
 ## Disable internal TLS
 To disable internal TLS, we need to pass the --insecure flag to the argocd-server command, this will avoid an internal redirection loop from HTTP to HTTPS. For this, we need to edit the deployment named “argocd-server” and make the following changes  
