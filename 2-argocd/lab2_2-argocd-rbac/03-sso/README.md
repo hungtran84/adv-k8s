@@ -1,26 +1,31 @@
-# Prerequisites
+## Prerequisites
 The following tools need to be installed:
 - Kubectl 
 - Yq (https://github.com/mikefarah/yq#install)
 
-# 1. Create Google OAuth2 client
-In your [Google Cloud Console](https://console.cloud.google.com), go to to the [“API & services”](https://console.cloud.google.com/apis), [credentials](https://console.cloud.google.com/apis/credentials) sub menu and create a new Oauth2 client ID. Fill in the fields as follows:
+## 1. Create Google OAuth2 client
+- In your [Google Cloud Console](https://console.cloud.google.com), go to to the [“API & services”](https://console.cloud.google.com/apis) -> [OAuth consent screen](https://console.cloud.google.com/apis/credentials/consent). Fill in the fields as below
+
+![Alt text](image-2.png)
+
+- Go to [credentials](https://console.cloud.google.com/apis/credentials) create a new Oauth2 client ID. Fill in the fields as follows:
 
 ![Alt text](image.png)
 
 
 Take note the `Client ID` and `Client Secret` to use in the next step
 
-# 2. Backup the current `argocd-cm` configMap
+## 2. Backup the current `argocd-cm` configMap
 ```
 kubectl get configmap argocd-cm -n argocd -o yaml | yq eval 'del(.metadata.resourceVersion, .metadata.uid, .metadata.annotations, .metadata.creationTimestamp, .metadata.selfLink, .metadata.managedFields)' - > argocd-cm.yaml
 ```
 
 The `yq` help us to remove unnecessary information out of the yaml file, so that our file will be export in the original format.
 
-# 3. Update `argocd-cm` configMap
+## 3. Update `argocd-cm` configMap
 Modify the `argocd-cm.yaml` with the following configuration to enable Google SSO
-```
+
+```yaml
 apiVersion: v1
 data:
   accounts.alice: apiKey, login
@@ -54,12 +59,12 @@ metadata:
   namespace: argocd
 ```
 
-# 4. Apply the updated `argocd-cm` configMap
+## 4. Apply the updated `argocd-cm` configMap
 ```
 kubectl apply -f argocd-cm.yaml
 ```
 
-# 5. RBAC for Google account
+## 5. RBAC for Google account
 Add the following policy to the `argocd-rbac-cm` to assign the built-in role admin to your Google account
 ```
 g, <your_gmail>, role:admin
@@ -101,7 +106,7 @@ metadata:
   namespace: argocd
 ```
 
-# 5. Update custom domain
+## 5. Update custom domain
 Since the ArgoCD is not exposed to the external and the domain `argocd.yourcorp.com` is a custom local domain that we are not own it. So we can use a trick with `/etc/hosts` to map a local domain 
 
 Open `/etc/hosts` with `root` and update with the following valuee
@@ -125,8 +130,8 @@ PING argocd.lab.com (127.0.0.1): 56 data bytes
 ...
 ```
 
-# 6. Visit the ArgoCD UI
-## a) Port Forwarding
+## 6. Visit the ArgoCD UI
+### a) Port Forwarding
 Since our ArgoCD instance is still not public to the outside via any method, we need to do the port-forward it to our localhost to access it
 ```
 sudo kubectl port-forward svc/argocd-server -n argocd 80:80
