@@ -104,7 +104,7 @@ sudo vim /etc/hosts
 
 # Get admin password
 
-Get the password of the Argo CD application, for ‘admin’ username, by executing the below command.
+Get the password of the ArgoCD application, for ‘admin’ username, by executing the below command.
 ```
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath='{.data.password}' | base64 -d
 ```

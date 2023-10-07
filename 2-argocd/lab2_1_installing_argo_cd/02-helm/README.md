@@ -3,8 +3,8 @@ The two essential items you need to ensure before installing Argo are
 - [Kubectl](https://kubernetes.io/docs/tasks/tools/) installed
 - [Helm](https://helm.sh/docs/intro/install/) installed
 
-# Install Argo CD using HELM
-Link to Argo CD source code: https://github.com/argoproj/argo-helm.git
+# Install ArgoCD using HELM
+Link to ArgoCD source code: https://github.com/argoproj/argo-helm.git
 ```
 git clone https://github.com/argoproj/argo-helm.git
 ```
@@ -41,26 +41,26 @@ crds:
 install: false
 ```
 
-# Check the status of Argo CD installation
+# Check the status of ArgoCD installation
 Once the installation is complete, let’s see the pods running 
 ```
 kubectl get po -n argocd-helm
 ```
 
-After ensuring the pods are running, then port-forward the Argo cd service to access the service from the browser. 
+After ensuring the pods are running, then port-forward the ArgoCD service to access the service from the browser. 
 ```
 kubectl port-forward service/argocd-helm-server 8090:80 -n argocd-helm
 ```
 
-You can now access the Argo CD UI from your browser by typing the following URL. http://localhost:8090
+You can now access the ArgoCD UI from your browser by typing the following URL. http://localhost:8090
 
-Very similar to the Argo CD installation using the manifest section, one has to get the password for the ‘admin’ password using the following command. 
+Very similar to the ArgoCD installation using the manifest section, one has to get the password for the ‘admin’ password using the following command. 
 
 Get the password from the new terminal using the below command.
 ```
 kubectl -n argocd-helm get secret argocd-initial-admin-secret -o jsonpath='{.data.password}' | base64 -d
 ```
-Login to Argo CD UI using the username: admin and password.  
+Login to ArgoCD UI using the username: admin and password.  
 
 # Uninstall Argocd using HELM
 You can simply follow the steps if you want to uninstall Argocd from your local machine. 

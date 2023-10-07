@@ -8,9 +8,9 @@ Create ArgoCD namespace
 kubectl create namespace argocd
 ```
 
-This will create a new namespace, argocd, where Argo CD services and application resources will live.
+This will create a new namespace, argocd, where ArgoCD services and application resources will live.
 
-> WARNING: The installation manifests include ClusterRoleBinding resources that reference argocd namespace. If you are installing Argo CD into a different namespace then make sure to update the namespace reference.
+> WARNING: The installation manifests include ClusterRoleBinding resources that reference argocd namespace. If you are installing ArgoCD into a different namespace then make sure to update the namespace reference.
 
 ### Non-HA mode
 
@@ -93,7 +93,7 @@ kubectl apply -n argocd -f \
     https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/ha/install.yaml
 ```
 
-If you are not interested in UI, SSO, multi-cluster features then you can install core Argo CD components only
+If you are not interested in UI, SSO, multi-cluster features then you can install core ArgoCD components only
 
 ```sh
 kubectl create namespace argocd

@@ -5,7 +5,7 @@ The following tools need to be installed:
 - Yq (https://github.com/mikefarah/yq#install)
 
 ## 1. Built-in role
-Argo CD has two pre-defined roles but RBAC configuration allows defining roles and groups (see below).
+ArgoCD has two pre-defined roles but RBAC configuration allows defining roles and groups (see below).
 
 - `role:readonly` - read-only access to all resources
 - `role:admin` - unrestricted access to all resources
