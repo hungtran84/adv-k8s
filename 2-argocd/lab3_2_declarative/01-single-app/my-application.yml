@@ -13,7 +13,7 @@ spec:
 
   # Source of the application manifests
   source:
-    repoURL: https://github.com/hungtran84/argocd-example-app.git.git
+    repoURL: https://github.com/hungtran84/argocd-example-app.git
     targetRevision: HEAD
     path: ./declarative/manifests
    
