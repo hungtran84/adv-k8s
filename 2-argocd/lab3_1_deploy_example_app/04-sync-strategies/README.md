@@ -1,10 +1,10 @@
 # Auto-sync
 ## Requirement
 - Student fork the `argocd-example-apps` to their own repo.
-- Create new branch from `master` called `lab5`
+- Create new branch from `master` called `lab4`
 
     ```sh
-    git checkout -b lab5
+    git checkout -b lab4
     git push
     ```
 ## Deploy app using ArgoCD UI
@@ -17,7 +17,7 @@ application name : demo
 project: default  
 SYNC POLICY: automatic  
 repository URL: https://github.com/<your user>/argocd-example-apps.git
-Target Revision: lab5
+Target Revision: lab4
 path: guestbook  
 Cluster: https://kubernetes.default.svc
 Namespace: default  
@@ -47,7 +47,7 @@ You should see the newer version of application from its UI
 Let's rollback to the earlier version using Git
 ```sh
 $ git log
-commit d90dd7ba09926fcd165a07a910fbdd5255718b68 (HEAD -> lab5, origin/lab5)
+commit d90dd7ba09926fcd165a07a910fbdd5255718b68 (HEAD -> lab4, origin/lab4)
 Author: hungts <hungts@axon.com>
 Date:   Sun Oct 8 01:21:11 2023 +0700
 
@@ -60,7 +60,7 @@ Date:   Sat Oct 7 23:55:58 2023 +0700
     add labs
 
 $ git revert d90dd7ba09926fcd165a07a910fbdd5255718b68
-[lab5 d2d4724] Revert "feat: upgrade app"
+[lab4 d2d4724] Revert "feat: upgrade app"
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 $ git push
