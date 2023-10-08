@@ -17,7 +17,7 @@ We already have such example at https://github.com/hungtran84/argocd-example-app
 
 In the ArgoCD UI, click the "New app" button on the top left and fill the following details:
 
-```
+```t
 application name : 3-apps
 project: default
 SYNC POLICY: automatic
@@ -25,10 +25,11 @@ repository URL: https://github.com/hungtran84/argocd-example-app.git
 path: ./declarative/multiple-apps
 Cluster: https://kubernetes.default.svc (this is the same cluster where ArgoCD is installed)
 Namespace: argocd
+```
+
 Notice that the namespace value is the namespace where the parent Application is deployed and not the namespace where the individual applications are deployed. ArgoCD applications must be deployed in the same namespace as ArgoCD itself.
 
 Leave all the other values empty or with default selections. Finally click the Create button.
-```
 
 ArgoCD will deploy the parent application and its 3 children. Click on the parent application.
 
