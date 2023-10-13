@@ -8,8 +8,7 @@ spec:
   - group: '*'
     kind: '*'
   destinations:
-  - namespace: default
+  - namespace: helm-guestbook
     server: https://kubernetes.default.svc
   sourceRepos:
   - https://github.com/hungtran84/argocd-example-app.git
-status: {}
