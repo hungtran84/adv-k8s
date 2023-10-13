@@ -2,7 +2,6 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: kustomize-guestbook 
-  annotations:
   namespace: argocd  
 spec:
   destination:
@@ -13,13 +12,11 @@ spec:
   syncPolicy:
     automated:
       prune: true
-  source:
-    path: kustomize-guestbook
-    repoURL: https://github.com/hungtran84/argocd-example-app.git
-  syncPolicy:
-    automated:
-      prune: true
       allowEmpty: true
       selfHeal: true
     syncOptions:
     - CreateNamespace=true
+  source:
+    path: kustomize-guestbook
+    repoURL: https://github.com/hungtran84/argocd-example-app.git
+
