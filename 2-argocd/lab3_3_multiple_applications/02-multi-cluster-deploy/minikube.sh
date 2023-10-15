@@ -15,8 +15,7 @@ kubectl --namespace ingress-nginx wait \
     --selector=app.kubernetes.io/component=controller \
     --timeout=120s
 
-INGRESS_HOST=$(minikube ip)
-export INGRESS_HOST
+export INGRESS_HOST=$(minikube ip)
 
 ###################
 # Install Argo CD #
@@ -26,24 +25,21 @@ helm repo add argo https://argoproj.github.io/argo-helm
 
 helm upgrade --install argocd argo/argo-cd \
     --namespace argocd --create-namespace \
-    --set server.ingress.hosts="{argocd.lab.local}" \
+    --set server.ingress.hosts="{argocd.$INGRESS_HOST.nip.io}" \
     --values argo/argocd-values.yaml --wait
 
-PASS=$(kubectl --namespace argocd \
+export PASS=$(kubectl --namespace argocd \
     get secret argocd-initial-admin-secret \
     --output jsonpath="{.data.password}" | base64 -d)
 
-export PASS
-
 argocd login --insecure --username admin --password $PASS \
-    --grpc-web argocd.lab.local
+    --grpc-web argocd.$INGRESS_HOST.nip.io
 
 echo $PASS
 
-open http://argocd.lab.local
 
 #######################
 # Destroy The Cluster #
 #######################
 
-# minikube delete
+minikube delete
