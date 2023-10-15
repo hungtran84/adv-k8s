@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: argo-workflows
+  namespace: argocd
+spec:
+  generators:
+  - clusters: {} 
+  template: 
+    metadata:
+      name: "{{name}}-argo-workflows"
+    spec:
+      project: "default"
+      source:
+        repoURL: https://github.com/hungtran84/argocd-example-app/
+        targetRevision: HEAD
+        path: argo-workflow
+      destination:
+        server: '{{server}}'
+        namespace: argo
+      syncPolicy:
+        syncOptions:    
+        - CreateNamespace=true
+        automated:
+          prune: true
+          selfHeal: true
