@@ -1,5 +1,5 @@
 # Blue/Green with Argo Rollouts
-Our example application can be found at `https://github.com/hungtran84/argocd-example-app.git/tree/main/blue-green-app`.
+Our example application can be found at `https://github.com/hungtran84/argocd-example-app.git/tree/master/blue-green-app`.
 
 It is a very simple application with one deployment and one service. Notice that the deployment has been converted to a Rollout and has an extra section about the blue/green deployment options.
 

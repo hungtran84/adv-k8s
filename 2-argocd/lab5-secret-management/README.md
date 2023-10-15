@@ -1,5 +1,5 @@
 # Secret Management
-Our example application can be found at `https://github.com/hungtran84/argocd-example-app.git/tree/main/secret-app`
+Our example application can be found at `https://github.com/hungtran84/argocd-example-app.git/tree/master/secret-app`
 
 Make sure to fork it to your own account and note down the URL. It should be something like:
 
