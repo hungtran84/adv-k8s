@@ -79,7 +79,7 @@ Go ahead and delete the parent application from the UI or the CLI. After a while
 ## Cluster boostrapping
 Using Argo CD App of Apps during infrastructure provisioning  
 
-It is important to mention that the root application is also an Argo CD application on its own. A manifest was generated for it that you can also see at `https://github.com/hungtran84/argocd-example-app/blob/main/app-of-apps/root-app/my-application.yml`
+It is important to mention that the root application is also an Argo CD application on its own. A manifest was generated for it that you can also see at `https://github.com/hungtran84/argocd-example-app/blob/master/app-of-apps/root-app/my-application.yml`
 
 >Notice that in line 18 it points to the folder of the other applications (instead of Kubernetes manifests).
 

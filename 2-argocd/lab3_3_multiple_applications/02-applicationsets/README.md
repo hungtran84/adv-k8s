@@ -28,7 +28,7 @@ Application Sets do not interact directly with the cluster or ArgoCD. They are j
 ## Using the list generator
 Let's see a simple example using the List generator. The list generator iterates over a list of resources and creates ArgoCD applications with each loop.
 
-If you look at the starting example at `https://github.com/hungtran84/argocd-example-app/blob/main/application-sets/my-application-sets/single-app-many-times.yml` you will see we use namespaces as the iterator source.
+If you look at the starting example at `https://github.com/hungtran84/argocd-example-app/blob/master/application-sets/my-application-sets/single-app-many-times.yml` you will see we use namespaces as the iterator source.
 
 ```yaml
   generators:
