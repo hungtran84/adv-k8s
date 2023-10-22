@@ -19,8 +19,7 @@ gcloud services enable container.googleapis.com && \
 gcloud container clusters create $CLUSTER_NAME \
 --cluster-version latest \
 --machine-type=$M_TYPE \
---disk-size=80GB \
---num-nodes 3 \
+--num-nodes 4 \
 --zone $ZONE \
 --project $PROJECT_ID
 ```
