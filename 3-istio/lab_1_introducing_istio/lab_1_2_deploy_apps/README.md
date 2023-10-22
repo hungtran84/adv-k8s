@@ -28,9 +28,16 @@ Check gateway:
 
 ```
 kubectl get svc istio-ingressgateway -n istio-system
+
+ISTIO_INGRESS_IP=$(kubectl get svc istio-ingressgateway -n istio-system --output jsonpath='{.status.loadBalancer.ingress[0].ip}')
+
+export $ISTIO_INGRESS_IP
 ```
 
-> Browse to http://localhost/productpage
+Open Productpage app
+```sh
+open http://$ISTIO_INGRESS_IP/productpage
+```
 
 ## 2.3 Check pods have proxy auto-injected
 
@@ -40,11 +47,6 @@ Show the productpage proxy setup:
 kubectl describe pods -l app=productpage
 ```
 
-Find all proxy containers:
-
-```
-docker container ls --filter name=istio-proxy_*
-```
 
 Check proxy processes for the product page:
 

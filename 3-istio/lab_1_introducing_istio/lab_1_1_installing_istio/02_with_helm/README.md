@@ -38,6 +38,12 @@ istio-base      istio-system    1               2023-10-03 23:18:12.144454 +0700
 helm install istiod istio/istiod --version $ISTIO_VERSION -n istio-system --wait
 ```
 
+6. Install the Istio Ingress Gateway
+
+```
+helm install istio-ingressgateway istio/gateway -n istio-system
+```
+
 ## Install Istio Telemetry Add-ons
 
 1. Istio telemetry add-ons are shipped as samples, but these add-ons are optimized for quick getting started and demo purposes and not for production usage. They provides a convenient way to install telemetry components that integrate with Istio.
