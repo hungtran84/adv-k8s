@@ -37,7 +37,7 @@ You can see that GitOps is not only useful for your own applications but also fo
 
 ## Use Kubeseal to encrypt secrets
 The Sealed Secrets controller is running now on the cluster and it is ready to decrypt secrets.
-
+kube
 We now need to encrypt our secrets and commit them to git. Encryption happens with the kubeseal executable. It needs to be installed in the same way as kubectl. It re-uses the cluster authentication already used by kubectl.
 
 ## Install Kubeseal

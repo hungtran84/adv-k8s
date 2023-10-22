@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: workout-gateway
+  name: workout-gateway
+spec:
+  selector:
+    matchLabels:
+      app: workout-gateway
+  template:
+    metadata:
+      labels:
+        app: workout-gateway
+    spec:
+      containers:
+      - env:
+        - name: RUN_CONTROLLER_URL
+          value: http://run-controller:8080
+        image: ghcr.io/hungtran84/workout-gateway
+        imagePullPolicy: Always
+        name: workout-gateway
+      restartPolicy: Always

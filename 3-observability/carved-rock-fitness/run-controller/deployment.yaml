@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: run-controller
+  name: run-controller
+spec:
+  selector:
+    matchLabels:
+      app: run-controller
+  template:
+    metadata:
+      labels:
+        app: run-controller
+    spec:
+      containers:
+      - name: run-controller
+        env:
+        - name: REDIS_HOST
+          value: impressive-spaniel-redis-master
+        - name: REDIS_PASSWORD
+          value: fQJIviDfk7
+        image: ghcr.io/hungtran84/run-controller
+
+
+
