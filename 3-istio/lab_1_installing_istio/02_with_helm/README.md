@@ -5,8 +5,6 @@ Perform any necessary platform-specific setup.
 
 Check the Requirements for Pods and Services.
 
-
-
 1. Configure the Helm repository:
 
 ```sh

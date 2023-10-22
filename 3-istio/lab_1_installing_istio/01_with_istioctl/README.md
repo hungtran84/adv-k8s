@@ -1,15 +1,4 @@
 # Install Istio using `istioclt`
-## Create GKE cluster
-
-```sh
-gcloud container clusters create my-istio-cluster \
-  --zone "asia-southeast1-a" \
-  --cluster-version latest \
-  --machine-type "n1-standard-2" \
-  --num-nodes "3" \
-  --network "default"
-```
-
 ## Download Istio
 
 1. Download the Istio release binary:
