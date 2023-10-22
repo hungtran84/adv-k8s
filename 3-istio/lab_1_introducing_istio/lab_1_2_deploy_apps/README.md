@@ -39,19 +39,3 @@ Open Productpage app
 open http://$ISTIO_INGRESS_IP/productpage
 ```
 
-## 2.3 Check pods have proxy auto-injected
-
-Show the productpage proxy setup:
-
-```
-kubectl describe pods -l app=productpage
-```
-
-
-Check proxy processes for the product page:
-
-```
-docker container ls --filter name=istio-proxy_productpage* -q
-
-docker container top $(docker container ls --filter name=istio-proxy_productpage* -q)
-```
