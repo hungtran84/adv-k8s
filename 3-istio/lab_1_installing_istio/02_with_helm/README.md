@@ -40,25 +40,39 @@ istio-base      istio-system    1               2023-10-03 23:18:12.144454 +0700
 helm install istiod istio/istiod --version $ISTIO_VERSION -n istio-system --wait
 ```
 
-6. Access the `Prometheus UI` at http://0.0.0.0:9090 , you should be able to view the Prometheus UI from there. Press `ctrl+C` to end the prior command, and use the command below to enable access to the `Grafana` dashboard:
+## Install Istio Telemetry Add-ons
+
+1. Istio telemetry add-ons are shipped as samples, but these add-ons are optimized for quick getting started and demo purposes and not for production usage. They provides a convenient way to install telemetry components that integrate with Istio.
 
 ```sh
+kubectl apply -f istio-${ISTIO_VERSION}/samples/addons
+```
+
+2. Wait till all pods in the istio-system are running:
+
+```sh
+kubectl get pods -n istio-system
+```
+
+3. Enable access to the Prometheus dashboard:
+
+```
 istioctl dashboard prometheus --browser=false --address 0.0.0.0
 ```
 
-7. Access the Grafana dashboard at http://0.0.0.0:3000, and you should be able to view the `Grafana UI`. Press `ctrl+C` to end the prior command, and use the command below to enable access to the `Jaeger` dashboard:
+4. Access the `Prometheus UI` at http://0.0.0.0:9090 , you should be able to view the Prometheus UI from there. Press `ctrl+C` to end the prior command, and use the command below to enable access to the `Grafana` dashboard:
 
 ```sh
 istioctl dashboard grafana --browser=false --address 0.0.0.0
 ```
 
-8. Access the Jaeger UI at http://0.0.0.0:16686, and you should be able to view the `Jaeger UI`. Press `ctrl+C` to end the prior command, and use the command below to enable access to the `Kiali` dashboard:
+5. Access the Grafana dashboard at http://0.0.0.0:3000, and you should be able to view the `Grafana UI`. Press `ctrl+C` to end the prior command, and use the command below to enable access to the `Jaeger` dashboard:
 
 ```sh
 istioctl dashboard jaeger --browser=false --address 0.0.0.0
 ```
 
-9. Access the Kiali UI at http://0.0.0.0:20001/kiali, and you should be able to view the `Kiali UI`. Press `ctrl+C` to end the prior command. You will not see much telemetry data on any of these dashboards now, as you don't have any services defined in the Istio service mesh yet. You will revisit these dashboards soon.
+6. Access the Jaeger UI at http://0.0.0.0:16686, and you should be able to view the `Jaeger UI`. Press `ctrl+C` to end the prior command, and use the command below to enable access to the `Kiali` dashboard:
 
 ```sh
 istioctl dashboard kiali --browser=false --address 0.0.0.0
