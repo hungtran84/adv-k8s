@@ -45,12 +45,14 @@
 - Get the WordPress URL by running these commands
 
 ```shell
-export SERVICE_IP=$(kubectl get svc --namespace wordpress wordpress-dev --template "{{ range (index .status.loadBalancer.ingress 0) }}{{ . }}{{ end }}")
+export SERVICE_IP=$(kubectl get svc \
+    --namespace wordpress wordpress-dev \
+    --template "{{ range (index .status.loadBalancer.ingress 0) }}{{ . }}{{ end }}")
+
 echo "WordPress URL: http://$SERVICE_IP/"
 echo "WordPress Admin URL: http://$SERVICE_IP/admin"
 echo Username: user
-echo Password: $(kubectl get secret --namespace wordpress wordpress-dev -o jsonpath="{.data.wordpress-password}" | base64 -d)
-
+echo Password: $(kubectl get secret --namespace wordpress wordpress-dev --output jsonpath="{.data.wordpress-password}" | base64 -d)
 
 Username: user
 Password: xxxx
