@@ -3,6 +3,10 @@
 Launch new version of the reviews service which only the test user can see.
 
 ## 1. Setup
+Create `bookinfo` namespace
+```sh
+kubectl create ns bookinfo
+```
 
 Set the default namespace to `bookinfo`
 
@@ -13,12 +17,10 @@ kubectl config view --minify | grep namespace:
 
 Deploy Istio & bookinfo apps v1 to `bookinfo` namespace
 
-```sh
-kubectl apply -f https://raw.githubusercontent.com/istio/istio/master/samples/bookinfo/platform/kube/bookinfo.yaml -l 'account in (reviews,details,ratings,productpage)'
-```
 
 ```sh
 $ kubectl apply -f https://raw.githubusercontent.com/istio/istio/master/samples/bookinfo/platform/kube/bookinfo.yaml -l 'account in (reviews,details,ratings,productpage)'
+
 serviceaccount/bookinfo-details created
 serviceaccount/bookinfo-ratings created
 serviceaccount/bookinfo-reviews created
