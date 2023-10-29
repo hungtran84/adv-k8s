@@ -6,7 +6,7 @@
 
 Deploy the app ([bookinfo-v1.yaml](./bookinfo-v1.yaml)):
 
-```
+```sh
 kubectl apply -f bookinfo-v1.yaml
 ```
 
@@ -31,7 +31,7 @@ kubectl get svc istio-ingressgateway -n istio-system
 
 ISTIO_INGRESS_IP=$(kubectl get svc istio-ingressgateway -n istio-system --output jsonpath='{.status.loadBalancer.ingress[0].ip}')
 
-export $ISTIO_INGRESS_IP
+export ISTIO_INGRESS_IP
 ```
 
 Open Productpage app
