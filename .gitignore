@@ -45,3 +45,6 @@ scripts/.venv
 *.pyc
 
 pyvenv.cfg
+
+# Self-signed certificate
+
