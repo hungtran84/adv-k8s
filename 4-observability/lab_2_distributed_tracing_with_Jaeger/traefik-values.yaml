@@ -1,0 +1,4 @@
+tracing:
+  jaeger:
+    samplingServerURL: http://jaeger-agent.default.svc:5778/sampling
+    localAgentHostPort: jaeger-agent.default.svc:6831
