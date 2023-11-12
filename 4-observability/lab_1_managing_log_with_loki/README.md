@@ -112,7 +112,7 @@ This Helm Chart installation runs the Grafana Loki *single binary* within a Kube
 
 1. Search for a certain log (like grep)
     ```
-    {app="api"} |=`400`
+    {app="api"} |=`"code":"400`
     ```
 
 ## Promtail pipeline
