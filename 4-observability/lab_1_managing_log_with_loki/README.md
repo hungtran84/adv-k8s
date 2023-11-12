@@ -110,6 +110,11 @@ This Helm Chart installation runs the Grafana Loki *single binary* within a Kube
 
     ![Alt text](image-3.png)
 
+1. Search for a certain log (like grep)
+    ```
+    {app="api"} |=`400`
+    ```
+
 ## Promtail pipeline
 
 What if we want `method` & `code` to be labels so we can easily run the advance queries to sum up all the error GET requests (code=5xx,method=GET)? We can do this by adding the promtail pipeline configuration.
