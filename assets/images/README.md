@@ -27,33 +27,33 @@ Before you can create your lab environment, ensure you have the following:
 
 https://accounts.google.com/SignUp
 
-![alt text](./assets/images/image.png)
+![alt text](image.png)
 
 ![alt text](./assets/images/image-1.png)
 
-![alt text](./assets/images/image-3.png)
+![alt text](image-3.png)
 
 2. Create GCP Free Trial account
 
 - Switch to your google account
 - Access to https://cloud.google.com/
 - Hit `Start free` on the top right corner
-![alt text](./assets/images/image-5.png)
+![alt text](image-5.png)
 
 - Step 1:
 
-![alt text](./assets/images/image-6.png)
+![alt text](image-6.png)
 
 - Step 2: The Account Type must be `Individual`
-![alt text](./assets/images/image-7.png)
+![alt text](image-7.png)
 
 - Step 3: Payment Verification / Survey
 
-![alt text](./assets/images/image-8.png)
+![alt text](image-8.png)
 
-![alt text](./assets/images/image-9.png)
+![alt text](image-9.png)
 
-![alt text](./assets/images/image-10.png)
+![alt text](image-10.png)
 
 
 ### Set Up Your Lab Environment
