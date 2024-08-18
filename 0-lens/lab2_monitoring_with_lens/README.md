@@ -4,6 +4,16 @@
 
 [ Creating your clusters](../../1-helm/lab3_kubernetes_install/README.md)
 
+## Install Gcloud SDK
+### Gcloud DSK
+- MacOS: https://cloud.google.com/sdk/docs/install#mac
+- Windows: https://cloud.google.com/sdk/docs/install#windows
+
+### GKE plugin
+```
+gcloud components install kubectl
+```
+
 ## Adding/Removing clusters to Lens
 
 ### Via local kubeconfig file
