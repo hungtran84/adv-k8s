@@ -4,8 +4,8 @@
 
 [ Creating your clusters](../../1-helm/lab3_kubernetes_install/README.md)
 
-## Install Gcloud SDK
-### Gcloud DSK
+## Install GCloud SDK
+### GCloud SDK
 - MacOS: https://cloud.google.com/sdk/docs/install#mac
 - Windows: https://cloud.google.com/sdk/docs/install#windows
 
