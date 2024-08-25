@@ -7,7 +7,8 @@ This chart bootstraps an ingress-nginx deployment on a  cluster using the  packa
 Kubernetes: >=1.21.0-0
 
 ## Get Repo Info
-```helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+```
+helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
 helm repo update
 ```
 
