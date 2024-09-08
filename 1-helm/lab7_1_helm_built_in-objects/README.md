@@ -151,7 +151,7 @@ File Lines: {{ .Files.Lines "config-files/myconfig2.toml" }}
 File Glob: {{ .Files.Glob "config-files/*" }}
 
 # Copy the configuration files to your helm chart 
-cp -R 1-helm/lab7_1_helm_built_in-objects/files-demo builtinobjects
+cp -R 1-helm/lab7_1_helm_built_in-objects/files-demo/* builtinobjects
 
 # Helm Install with --dry-run
 helm install myapp1 builtinobjects  --dry-run
