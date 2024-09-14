@@ -15,14 +15,14 @@ spec:
         app: todo
     spec:
       containers:
-        - image: ghcr.io/username/todo:1.0
+        - image: ghcr.io/hungtran84/todo:1.0
           imagePullPolicy: IfNotPresent
           name: todo
           ports:
             - containerPort: 3000
       # Define an image pull secret if necessary
       imagePullSecrets:
-        - name: ghcr-creds
+        - name: my-secret
       securityContext:
         runAsGroup: 0
         runAsUser: 0

@@ -103,9 +103,11 @@ Login Succeeded
 7. **Depending on the OCI registry you have chosen to use for your image (and whether it's a public or private repo), you may need to create a secret for the credentials to authenticate. If so, create a Kubernetes secret containing your registry login credentials. If not, don't worry about the secret and be sure to amend the deployment definition to remove the `imagePullSecrets` section.**
 
     ```bash
-    kubectl create secret generic ghcr-creds \
-      --from-file=.dockerconfigjson=${HOME}/.docker/config.json \
-      --type=kubernetes.io/dockerconfigjson
+    kubectl create secret docker-registry my-secret \
+    --docker-server=ghcr.io \
+    --docker-username=YOUR_GITHUB_USERNAME \
+    --docker-password=YOUR_GITHUB_TOKEN \
+    --docker-email=your-email@example.com
     ```
 
 8. **Deploy the application to the cluster.**
@@ -117,7 +119,7 @@ Login Succeeded
 9. **Check the application is running as expected.** Make a note of the external IP address of the Service, and use this to consume the app in a web browser. Use `kubectl port-forward` if there is no external IP address assigned to the Service.
 
     ```bash
-    kubectl get all
+    kubectl port-forward services/todo 8888:3000
     ```
 
 That's it! The 'todo' app should be running in the cluster using SQLite as the persistence layer.
