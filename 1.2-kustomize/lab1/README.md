@@ -6,6 +6,50 @@ The purpose of this exercise is to get familiar with the 'todo' list app that wi
 
 The exercise requires a working Docker installation for building a container image and for testing the application prior to its deployment to Kubernetes. Docker can be obtained through a variety of means, including [Docker Desktop](https://docs.docker.com/get-docker/), and through native OS package managers ([Docker Install](https://docs.docker.com/engine/install/)). An account with an OCI registry is also required, such as [Docker Hub](https://hub.docker.com/) or the [GitHub Container Registry](https://github.com/features/packages), or any of the public cloud providers. A Kubernetes cluster is required for deploying the application.
 
+# Prerequisite Steps to Create `ghcr.io` OCI Registry
+
+## 1. **GitHub Account**
+   Ensure you have a GitHub account. If not, sign up for one at [github.com](https://github.com).
+
+## 2. **GitHub Personal Access Token (PAT)**
+   To authenticate against `ghcr.io`, you need a GitHub Personal Access Token (PAT) with the appropriate permissions.
+
+   ### Steps to Create a Personal Access Token:
+   1. Go to your GitHub account [Settings](https://github.com/settings/profile).
+   2. Navigate to **Developer settings** > **Personal access tokens** > **Fine-grained tokens**.
+   3. Click **Generate new token**.
+   4. Under **Select Scopes**, ensure you select:
+      - `read:packages` (To pull images)
+      - `write:packages` (To push images)
+      - `delete:packages` (Optional, if you need to delete images)
+      - `repo` (Optional, if you want to access private repositories)
+
+      ![alt text](image.png)
+   5. Save the token in a secure place as it will be shown only once.
+
+## 3. **Docker Installed**
+   Ensure that Docker is installed on your local machine. If not, you can download and install it from [Docker's official site](https://docs.docker.com/get-docker/).
+
+   After installation, confirm Docker is working by running:
+   ```bash
+   docker --version
+   ```
+## Use the Personal Access Token (PAT) to Log In to GitHub Container Registry via Docker
+
+To authenticate Docker with GitHub Container Registry, use your GitHub Personal Access Token (PAT).
+
+### Docker Login Command:
+Run the following command, replacing `YOUR_GITHUB_USERNAME` with your GitHub username and `YOUR_GITHUB_TOKEN` with the PAT you generated earlier:
+
+```bash
+echo YOUR_GITHUB_TOKEN | docker login ghcr.io -u YOUR_GITHUB_USERNAME --password-stdin
+```
+If the login is successful, you should see:
+```t
+Login Succeeded
+```
+
+
 # STEPS
 
 1. **Get some familiarity with the application.**
