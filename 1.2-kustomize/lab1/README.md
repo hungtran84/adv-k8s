@@ -69,9 +69,9 @@ Login Succeeded
 3. **Push the image to your chosen OCI registry, remembering to login first.**
 
     ```bash
-    docker login -u username -p password ghcr.io
     docker push ghcr.io/username/todo:1.0
     ```
+    ![alt text](image-1.png)
 
 4. **Check the application works by running a container.**
 
@@ -83,6 +83,8 @@ Login Succeeded
     ```
 
     Use a web browser to consume the app using the URL [localhost:3000](http://localhost:3000).
+
+    ![alt text](image-2.png)
 
 5. **Get some familiarity with the Kubernetes configuration for the application.**
 
