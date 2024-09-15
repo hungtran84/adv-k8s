@@ -51,7 +51,7 @@ brew install tree
 
     ```bash
     cd .. && mkdir overlays
-    cd overlay
+    cd overlays
     kustomize create --resources ../base
     ```
 
