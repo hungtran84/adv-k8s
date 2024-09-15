@@ -49,6 +49,10 @@ If the login is successful, you should see:
 Login Succeeded
 ```
 
+Push chart to GHCR
+```sh
+helm push example-chart-${CHART_VERSION}.tgz oci://ghcr.io/YOUR_GITHUB_USERNAME
+```
 
 # STEPS
 
