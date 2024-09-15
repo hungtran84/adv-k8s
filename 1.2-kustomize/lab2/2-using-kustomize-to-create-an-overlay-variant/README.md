@@ -50,7 +50,8 @@ brew install tree
 5. Create a Kustomization in the overlay directory, referencing the base directory as a resource:
 
     ```bash
-    cd ../overlay
+    cd .. && mkdir overlays
+    cd overlay
     kustomize create --resources ../base
     ```
 
