@@ -19,11 +19,11 @@ This lab simply requires an installation of the Kustomize standalone binary ([Ku
 
   patches:
     - patch: |-
-      - op: remove
-        path: /spec/template/spec/securityContext
-    target:
-      kind: Deployment
-      name: todo
+        - op: remove
+          path: /spec/template/spec/securityContext
+      target:
+        kind: Deployment
+        name: todo
   ```
 
 2. Perform a build of the Kustomization, and save its output into a temporary directory for comparison with the build from the previous exercise.
