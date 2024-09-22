@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: todo
+  name: todo
+spec:
+  selector:
+    matchLabels:
+      app: todo
+  template:
+    metadata:
+      labels:
+        app: todo
+    spec:
+      containers:
+        - image: ghcr.io/username/todo:1.0
+          name: todo
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 3000
+      # Define an image pull secret if necessary
+      # imagePullSecrets:
+      #   - name: ghcr-creds
+      securityContext:
+        runAsUser: 0
+        runAsGroup: 0

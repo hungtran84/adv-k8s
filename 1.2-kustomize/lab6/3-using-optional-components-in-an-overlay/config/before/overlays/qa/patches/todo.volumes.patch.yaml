@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todo
+spec:
+  template:
+    spec:
+      containers:
+        - name: todo
+          env:
+            - name: MYSQL_HOST
+              value: mysql
+          envFrom:
+            - configMapRef:
+                name: mysql-user-creds
+          volumeMounts:
+            - name: mysql-user-creds
+              mountPath: /etc/mysql/creds
+              readOnly: true
+      volumes:
+        - name: mysql-user-creds
+          secret:
+            secretName: mysql-user-creds

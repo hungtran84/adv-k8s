@@ -1,0 +1,32 @@
+apiVersion: kustomize.config.k8s.io/v1alpha1
+kind: Component
+resources:
+  - ../../bases/mysql
+  - persistent-volume.yaml
+  - persistent-volume-claim.yaml
+configMapGenerator:
+  - name: mysql-root-creds
+    literals:
+      - MYSQL_ROOT_PASSWORD_FILE=/etc/mysql/creds/MYSQL_ROOT_PASSWORD
+    behavior: replace
+  - name: mysql-user-creds
+    literals:
+      - MYSQL_USER_FILE=/etc/mysql/creds/MYSQL_USER
+      - MYSQL_PASSWORD_FILE=/etc/mysql/creds/MYSQL_PASSWORD
+      - MYSQL_DATABASE_FILE=/etc/mysql/creds/MYSQL_DATABASE
+secretGenerator:
+  - name: mysql-user-creds
+    envs:
+      - secrets/mysql-user-creds.env
+  - name: mysql-root-creds
+    envs:
+      - secrets/mysql-root-creds.env
+patches:
+  - path: patches/todo.volumes.patch.yaml
+    target:
+      kind: Deployment
+      name: todo
+  - path: patches/mysql.volumes.patch.yaml
+    target:
+      kind: Deployment
+      name: mysql
