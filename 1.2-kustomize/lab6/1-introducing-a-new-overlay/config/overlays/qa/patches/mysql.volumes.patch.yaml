@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql
+spec:
+  template:
+    spec:
+      containers:
+        - name: mysql
+          envFrom:
+            - configMapRef:
+                name: mysql-root-creds
+            - configMapRef:
+                name: mysql-user-creds
+          volumeMounts:
+            - name: mysql-persistent-storage
+              mountPath: /var/lib/mysql
+            - name: mysql-creds
+              mountPath: /etc/mysql/creds
+              readOnly: true
+      volumes:
+        - name: mysql-creds
+          projected:
+            sources:
+              - secret:
+                  name: mysql-root-creds
+                  items:
+                    - key: MYSQL_ROOT_PASSWORD
+                      path: MYSQL_ROOT_PASSWORD
+              - secret:
+                  name: mysql-user-creds
+                  items:
+                    - key: MYSQL_USER
+                      path: MYSQL_USER
+                    - key: MYSQL_PASSWORD
+                      path: MYSQL_PASSWORD
+                    - key: MYSQL_DATABASE
+                      path: MYSQL_DATABASE
+        - name: mysql-persistent-storage
+          persistentVolumeClaim:
+            claimName: mysql-pv-claim
