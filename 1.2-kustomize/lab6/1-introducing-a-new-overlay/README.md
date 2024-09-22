@@ -6,6 +6,8 @@ The purpose of this lab is to use Kustomize to create a new overlay that swaps o
 
 This lab simply requires an installation of the Kustomize standalone binary ([Kustomize Releases](https://github.com/kubernetes-sigs/kustomize/releases)). If you plan to deploy the app to test it out, you'll also need to have a Kubernetes cluster available, as well as the kubectl CLI installed. Information for installing kubectl is [here](https://kubectl.docs.kubernetes.io/installation/kubectl/).
 
+This lab is also required `nginx-ingress` installation from helm OCI repo with the latest version. The instruction can be found here https://docs.nginx.com/nginx-ingress-controller/installation/installing-nic/installation-with-helm/
+
 # STEPS
 
 1. Become familiar with the mechanism the app uses to determine if it needs to interact with a SQLite database or a MySQL instance for persistence.
