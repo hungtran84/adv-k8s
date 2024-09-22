@@ -1,0 +1,23 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ../base
+  - namespace.yaml
+buildMetadata:
+  - managedByLabel
+namespace: dev
+labels:
+  - pairs:
+      app.kubernetes.io/env: dev
+commonLabels:
+  app.kubernetes.io/version: v1.0
+images:
+  - name: ghcr.io/username/todo
+    newTag: dev
+configMapGenerator:
+  - name: db
+    literals:
+      - SQLITE_DB_LOCATION=/tmp/db/todo.db
+patches:
+  - path: deployment.env.patch.yaml
