@@ -6,6 +6,8 @@ The purpose of this lab is to use Kustomize to render configuration for the exam
 
 This lab simply requires an installation of the Kustomize standalone binary ([Kustomize Releases](https://github.com/kubernetes-sigs/kustomize/releases)). A comparison of the rendered configurations can be made manually in separate terminals, or you can use a diffing tool like 'delta' to make the comparison. To install delta for your OS, see [Delta Installation](https://dandavison.github.io/delta/installation).
 
+This lab is also required `nginx-ingress` installation from helm OCI repo with the latest version. The instruction can be found here https://docs.nginx.com/nginx-ingress-controller/installation/installing-nic/installation-with-helm/
+
 # STEPS
 
 1. Compare the overlays in the `before` and `after` directory structure in the config directory. Notice how the `qa` overlay Kustomization root is much simpler than before, but with references to Components. Inspect the different Component definitions to see how they differ from Kustomizations.

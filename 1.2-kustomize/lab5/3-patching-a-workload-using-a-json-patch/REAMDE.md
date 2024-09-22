@@ -6,8 +6,6 @@ The purpose of this lab is to use Kustomize to patch the app's Deployment defini
 
 This lab simply requires an installation of the Kustomize standalone binary ([Kustomize Releases](https://github.com/kubernetes-sigs/kustomize/releases)). A comparison of the rendered configurations can be made manually in separate terminals, or you can use a diffing tool like 'delta' to make the comparison. To install delta for your OS, see [Delta Installation](https://dandavison.github.io/delta/installation).
 
-This lab is also required `nginx-ingress` installation from helm OCI repo with the latest version. The instruction can be found here https://docs.nginx.com/nginx-ingress-controller/installation/installing-nic/installation-with-helm/
-
 # Steps
 
 1. Add a patch to the Kustomization in the overlay to remove the security context. Define the patch as a JSON patch. It should look like this:
