@@ -1,6 +1,6 @@
 # Istalling Istio
 
-> Adapted from the [Istio Quick Start](https://istio.io/docs/setup/kubernetes/quick-start/)
+> Adapted from the [Istio Quick Start](https://istio.io/latest/docs/setup/install/)
 
 ## 1.1 Deploy Istio
 - With istioctl
