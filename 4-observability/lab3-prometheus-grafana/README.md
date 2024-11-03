@@ -1,8 +1,4 @@
-Here's a lab guide for setting up and using Prometheus with Grafana from the `kube-prometheus-stack` Helm chart in Kubernetes.
-
----
-
-# Lab Guide: Setup Prometheus with kube-prometheus-stack in Kubernetes
+# Lab: Setup Prometheus & Grafana with kube-prometheus-stack in Kubernetes
 
 This lab will guide you through the setup of Prometheus, Grafana, and associated exporters using the `kube-prometheus-stack` Helm chart. We’ll cover basic installation steps, and then explore Prometheus metrics using both Grafana and the Prometheus UI.
 
@@ -190,6 +186,11 @@ kubectl delete crd servicemonitors.monitoring.coreos.com
 kubectl delete crd thanosrulers.monitoring.coreos.com
 ```
 
+Optionally delete the GKE cluster
+
+```sh
+gcloud container clusters delete lab-cluster --zone asia-east1-a
+```
 ---
 
 ## Summary
